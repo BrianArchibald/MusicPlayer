@@ -18,15 +18,17 @@
 		<div id="player">
 			<div id="songTitle">Demo</div>
 			<div id="buttons">
-				<button id="pre"><img src="images/Pre.png" height="90%" width="90%"/></button>
+				<button id="pre" onclick="pre()"><img src="images/Pre.png" height="90%" width="90%"/></button>
 				<button id="play" onclick="playOrPauseSong()"><img src="images/Play.png"/></button>
-				<button id="next"><img src="images/Next.png" height="90%" width="90%"/></button>
+				<button id="next" onclick="next()"><img src="images/Next.png" height="90%" width="90%"/></button>
 			</div>
 
 			<div id="seek-bar">
 				<div id="fill"></div>
 				<div id="handle"></div>
 			</div>
+
+			<div id="currentTime">00:00 / 00:00</div>
 		</div>
 	</div>
 </body>

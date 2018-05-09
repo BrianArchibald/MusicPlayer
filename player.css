@@ -45,6 +45,7 @@ body{
 #player{
     padding: 25px;
     color: #333;
+    padding-bottom: 30px;
 }
 #songTitle{
     width: 300px;
@@ -52,7 +53,7 @@ body{
     font-family: monospace;
     font-size: 18px;
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
@@ -65,7 +66,7 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
 }
-#play,#next{
+#play,#next,#pre{
     width: 50px;
     height: 50px;
     border: 0;
@@ -115,4 +116,12 @@ body{
     border-radius: 50%;
     margin-left: -5px;
     transform: scale(2);
+}
+#currentTime{
+    font-family: monospace;
+    font-size: 14px;
+    position: absolute;
+    top: 92%;
+    left: 30%;
+    transform: translate(-50%,-50%);
 }
