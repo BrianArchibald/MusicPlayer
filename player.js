@@ -35,6 +35,10 @@ song.addEventListener('timeupdate', function() {
 	fillBar.style.width = position + 100 +'%';
 
 	converTime(Math.round(song.currentTime));
+
+	if(song.ended) {
+		next();
+	}
 });
 
 function convertTime(seconds) {
@@ -46,6 +50,15 @@ function convertTime(seconds) {
 	currentTime.textContent = min + ':' + sec;
 
 	totalTime(Math.round(song.duration));
+}
+
+function totalTime(seconds) {
+	var min = Math.floor(seconds / 60);
+	var sec = seconds % 60;
+
+	min = (min < 10) ? '0' + min : min;
+	sec = (sec < 10) ? '0' + sec : sec;
+	currentTime.textContent += '/' + min + ':' + sec;
 }
 
 function next() {
@@ -68,4 +81,12 @@ function pre() {
 	$('#play img').attr('src',"Pause.png");
 	$('#image img').attr('src',poster[currentSong]);
 	$('#bg img').attr('src',poster[currentSong]);
+}
+
+function decreaseVolume() {
+	song.volume -= 0.20;
+}
+
+function increaseVolumen() {
+	song.volume += 0.20;
 }

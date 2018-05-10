@@ -125,3 +125,44 @@ body{
     left: 30%;
     transform: translate(-50%,-50%);
 }
+#volume{
+    position: absolute;
+    top: 92%;
+    left: 78%;
+    transform: translate(-50%,-50%);
+    display: flex;
+}
+#volumenIcon{
+    height: 25px;
+    width: 25px;
+    background-color: #261cb2;
+    border-radius: 50%;
+}
+#volumeIcon img{
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#decrease,#increase{
+    height: 20px;
+    width: 20px;
+    background-color: #261cb2;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-family: fantasy;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    line-height: 18px;
+    position: relative;
+    left: -2px;
+    top: 3px;
+    cursor: pointer;
+}
+#increase{
+    left: 2px;
+    top: 3px;
+}
