@@ -32,7 +32,7 @@ function playOrPauseSong() {
 
 song.addEventListener('timeupdate', function() {
 	var position = song.currentTime / song.duration;
-	fill.style.width = position + 100 +'%';
+	fillBar.style.width = `${position * 100}%`;
 
 	convertTime(Math.round(song.currentTime));
 
@@ -84,9 +84,9 @@ function pre() {
 }
 
 function decreaseVolume() {
-	song.volume -= 0.20;
+	song.volume > 0 && (song.volume = parseFloat(song.volume.toFixed(2)) - .2);
 }
 
 function increaseVolume() {
-	song.volume += 0.20;
+	song.volume !== 1 && (song.volume += 0.20);
 }
