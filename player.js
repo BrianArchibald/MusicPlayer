@@ -41,6 +41,14 @@ song.addEventListener('timeupdate', function() {
 	}
 });
 
+fillBar.addEventListener("click", seek);
+
+function seek(e) {
+    var percent = e.offsetX / this.offsetWidth;
+    song.currentTime = percent * song.duration;
+    fillBar.value = percent * 100;
+}
+
 function convertTime(seconds) {
 	var min = Math.floor(seconds / 60);
 	var sec = seconds % 60;
