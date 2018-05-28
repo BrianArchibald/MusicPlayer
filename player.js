@@ -1,6 +1,6 @@
 
-var songs = ['Song1.mp3', 'Song2.mp3','Song3.mp3'];
-var poster = ['Poster1.jpg','Poster2.jpg','Poster3.jpg',];
+var songs = ['Song1.mp3', 'Song2.mp3', 'Song3.mp3'];
+var poster = ['Poster1.jpg', 'Poster2.jpg', 'Poster3.jpg',];
 
 var songTitle = document.getElementById('songTitle');
 var fillBar = document.getElementById('fill');
@@ -21,33 +21,25 @@ function playSong() {
 }
 
 function playOrPauseSong() {
-	if(song.paused) {
+	if (song.paused) {
 		song.play();
-		$('#play img').attr('src','Pause.png');
+		$('#play img').attr('src', 'Pause.png');
 	} else {
 		song.pause();
-		$('#play img').attr('src','Play.png');
+		$('#play img').attr('src', 'Play.png');
 	}
 }
 
-song.addEventListener('timeupdate', function() {
+song.addEventListener('timeupdate', function () {
 	var position = song.currentTime / song.duration;
-	fillBar.style.width = `${position * 100}%`;
+	document.getElementById("fill").style.width = `${position * 100}%`;
 
 	convertTime(Math.round(song.currentTime));
 
-	if(song.ended) {
+	if (song.ended) {
 		next();
 	}
 });
-
-fillBar.addEventListener("click", seek);
-
-function seek(e) {
-    var percent = e.offsetX / this.offsetWidth;
-    song.currentTime = percent * song.duration;
-    fillBar.value = percent * 100;
-}
 
 function convertTime(seconds) {
 	var min = Math.floor(seconds / 60);
@@ -71,30 +63,32 @@ function totalTime(seconds) {
 
 function next() {
 	currentSong++;
-	if(currentSong > 2) {
+	if (currentSong > 2) {
 		currentSong = 0;
 	}
 	playSong();
-	$('#play img').attr('src',"Pause.png");
-	$('#image img').attr('src',poster[currentSong]);
-	$('#bg img').attr('src',poster[currentSong]);
+	$('#play img').attr('src', "Pause.png");
+	$('#image img').attr('src', "images/" + poster[currentSong]);
+	$('#bg img').attr('src', "images/" + poster[currentSong]);
 }
 
 function pre() {
 	currentSong--;
-	if(currentSong < 0) {
+	if (currentSong < 0) {
 		currentSong = 2;
 	}
 	playSong();
-	$('#play img').attr('src',"Pause.png");
-	$('#image img').attr('src',poster[currentSong]);
-	$('#bg img').attr('src',poster[currentSong]);
+	$('#play img').attr('src', "Pause.png");
+	$('#image img').attr('src', poster[currentSong]);
+	$('#bg img').attr('src', poster[currentSong]);
 }
 
 function decreaseVolume() {
 	song.volume > 0 && (song.volume = parseFloat(song.volume.toFixed(2)) - .2);
+	console.log(song.volume)
 }
 
 function increaseVolume() {
 	song.volume !== 1 && (song.volume += 0.20);
+	console.log(song.volume);
 }
