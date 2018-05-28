@@ -4,20 +4,19 @@ var poster = ['Poster1.jpg', 'Poster2.jpg', 'Poster3.jpg',];
 
 var songTitle = document.getElementById('songTitle');
 var fillBar = document.getElementById('fill');
-
 var currentTime = document.getElementById('currentTime');
+var progressBar = document.getElementById("seek-bar");
 
 //create an object for audio class
-
 var song = new Audio();
 var currentSong = 0; // points to current song
 
-window.onload = playSong; // calls function when window loads
+window.onload = playSong; 
 
 function playSong() {
 	song.src = songs[currentSong]; // set source of 0th song
 	songTitle.textContent = songs[currentSong];
-	song.play(); // plays the song
+	song.play(); 
 }
 
 function playOrPauseSong() {
@@ -33,7 +32,6 @@ function playOrPauseSong() {
 song.addEventListener('timeupdate', function () {
 	var position = song.currentTime / song.duration;
 	document.getElementById("fill").style.width = `${position * 100}%`;
-
 	convertTime(Math.round(song.currentTime));
 
 	if (song.ended) {
@@ -81,6 +79,16 @@ function pre() {
 	$('#play img').attr('src', "Pause.png");
 	$('#image img').attr('src', poster[currentSong]);
 	$('#bg img').attr('src', poster[currentSong]);
+}
+
+// clicking on seek bar changes position of the song
+
+progressBar.addEventListener("click", seek);
+
+function seek(e) {
+	var percent = e.offsetX / this.offsetWidth;
+	song.currentTime = percent * song.duration;
+	document.getElementById("fill").style.width = percent / 100;
 }
 
 function decreaseVolume() {
